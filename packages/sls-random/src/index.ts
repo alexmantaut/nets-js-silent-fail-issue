@@ -1,30 +1,25 @@
-import { fetchRandomNumber as fetchNumber } from '@org/random'
-import {
-  APIGatewayEventRequestContext,
-  APIGatewayProxyEvent,
-  APIGatewayProxyResult
-} from 'aws-lambda'
+import { NestFactory } from '@nestjs/core'
+import { MonitorModule, MonitorService } from '@org/random'
 
-export const fetchRandomNumber = async (
-  event: APIGatewayProxyEvent,
-  context: APIGatewayEventRequestContext
-): Promise<APIGatewayProxyResult> => {
-  // tslint:disable-next-line: no-console
-  console.info(`
-    fetchRandomNumber fired with:
-    event: ${JSON.stringify(event)}
-    context: ${JSON.stringify(context)}
-  `)
+async function handler() {
+  console.log('Start')
 
-  const randomNr = await fetchNumber()
-
-  // tslint:disable-next-line: no-console
-  console.log(`
-    fetched number: ${randomNr}
-  `)
-
-  return {
-    body: `Your special number is: ${randomNr}`,
-    statusCode: 200
+  try {
+    const app = await NestFactory.createApplicationContext(MonitorModule, {})
+  } catch (error) {
+    console.log('Error', error)
   }
+
+  console.log('success')
 }
+
+handler().then(
+  (value: void) => {
+    console.log('Test program end')
+    process.exit()
+  },
+  (reason: Error) => {
+    console.error('Test program uncaught exception:', reason)
+    process.exit()
+  }
+)

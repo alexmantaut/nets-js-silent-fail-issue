@@ -8,25 +8,16 @@
     "rootDir": ".",
     "baseUrl": "./packages",
     "paths": {
-      "@org/*": ["./*/src"]
+      "@farmbot/*": ["./*/src"]
     },
     "typeRoots": ["./node_modules/@types", "./packages/types"],
 
-    "composite": true,
     "declaration": true,
-    "declarationMap": true,
-    "sourceMap": true,
-
-    "strict": true,
+    "composite": true,
+    "esModuleInterop": true,
     "noImplicitAny": true,
-    "noUnusedLocals": true,
-    "noImplicitThis": true,
-    "strictNullChecks": true,
-    "noImplicitReturns": true,
-    "preserveConstEnums": true,
-    "suppressImplicitAnyIndexErrors": true,
-    "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true,
-    "esModuleInterop": true
+    "sourceMap": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true
   }
 }

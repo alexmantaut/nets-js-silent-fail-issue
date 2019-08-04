@@ -2,7 +2,11 @@
   "defaultSeverity": "error",
   "extends": ["tslint:recommended", "tslint-config-prettier"],
   "jsRules": {},
-  "rules": {},
+  "rules": {
+    "object-literal-sort-keys": false,
+    "no-console": false,
+    "no-empty": false
+  },
   "rulesDirectory": [],
   "exclude": ["**/*.d.ts"]
 }
